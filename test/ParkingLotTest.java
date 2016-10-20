@@ -1,3 +1,4 @@
+import org.Car;
 import org.ParkingLot;
 import org.junit.Test;
 
