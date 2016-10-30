@@ -14,7 +14,7 @@ public class ParkingLot implements Management{
     }
 
     public void registerCar(Car car) throws Exception {
-        if(cars.size() < this.slotNumber) {
+        if(isAvailable()) {
             cars.add(car);
         } else {
             throw new Exception("ParkingLot is full!");
@@ -28,6 +28,10 @@ public class ParkingLot implements Management{
         } else {
             throw new Exception("Can't find your car!");
         }
+    }
+
+    public boolean isAvailable() {
+        return cars.size() < this.slotNumber;
     }
 
     public int getSlot() {

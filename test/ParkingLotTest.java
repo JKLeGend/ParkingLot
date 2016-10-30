@@ -48,4 +48,14 @@ public class ParkingLotTest {
         parkingLot.removeCar(audi);
     }
 
+    @Test
+    public void testParkingLotIsAvailable() throws Exception {
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car benz = new Car();
+        Car audi = new Car();
+        parkingLot.registerCar(benz);
+        parkingLot.registerCar(audi);
+
+        assertEquals(true, parkingLot.isAvailable());
+    }
 }

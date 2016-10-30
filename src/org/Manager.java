@@ -12,6 +12,16 @@ public class Manager {
         this.parkingLots = parkingLots;
     }
 
+    public boolean park(Car car) throws Exception {
+        for(ParkingLot parkingLot:parkingLots){
+            if(parkingLot.isAvailable()) {
+                car.park(parkingLot);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int getLots() {
         return this.parkingLots.size();
     }
