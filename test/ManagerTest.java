@@ -26,6 +26,7 @@ public class ManagerTest {
         parkingLots.add(southParkingLot);
         parkingLots.add(northParkingLot);
     }
+
     @Test
     public void testManagerParkingLotNum() {
         manager.manage(parkingLots);

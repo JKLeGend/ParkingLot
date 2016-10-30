@@ -56,6 +56,16 @@ public class ParkingLotTest {
         parkingLot.registerCar(benz);
         parkingLot.registerCar(audi);
 
-        assertEquals(true, parkingLot.isAvailable());
+        assertEquals(false, parkingLot.isAvailable());
     }
+
+    @Test
+    public void testAvailableParkingLot() throws Exception {
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car benz = new Car();
+        parkingLot.registerCar(benz);
+
+        assertEquals(1, parkingLot.getAvailableSlot());
+    }
+
 }

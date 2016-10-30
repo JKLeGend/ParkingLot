@@ -38,6 +38,11 @@ public class ParkingLot implements Management{
         return this.slotNumber;
     }
 
+    public int getAvailableSlot() {
+        return this.slotNumber - cars.size();
+    }
+
+
     public int checkParkStatus() {
         return this.cars.size();
     }
