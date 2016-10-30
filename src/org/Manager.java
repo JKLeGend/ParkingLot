@@ -16,10 +16,28 @@ public class Manager {
         for(ParkingLot parkingLot:parkingLots){
             if(parkingLot.isAvailable()) {
                 car.park(parkingLot);
-                return true;
+            } else {
+                throw new Exception();
             }
         }
-        return false;
+        return true;
+    }
+
+    public boolean fetch(Car car) throws Exception {
+        int empty = 0;
+        for(ParkingLot parkingLot: parkingLots){
+            try{
+                car.leave(parkingLot);
+            } catch(Exception e)  {
+                empty++;
+            }
+        }
+
+        if (empty == parkingLots.size()) {
+            throw new Exception();
+        }
+
+        return true;
     }
 
     public int getLots() {

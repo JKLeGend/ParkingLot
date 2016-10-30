@@ -35,16 +35,14 @@ public class ManagerTest {
 
     @Test
     public void testManagerParkCarWhenParkingLotAvailable() throws Exception {
-        Manager manager = new Manager();
         manager.manage(parkingLots);
         Car benz = new Car();
 
         assertEquals(true, manager.park(benz));
     }
 
-    @Test
-    public void testManagerParkCarWhenNoParkingLotAvailable() throws Exception {
-        Manager manager = new Manager();
+    @Test(expected = Exception.class)
+    public void testManagerParkCarWhenNoParkingLotsAvailable() throws Exception {
         parkingLots = new ArrayList();
         ParkingLot eastParkingLot = new ParkingLot(1);
         ParkingLot westParkingLot = new ParkingLot(1);
@@ -58,6 +56,25 @@ public class ManagerTest {
         benz.park(eastParkingLot);
         audi.park(westParkingLot);
 
-        assertEquals(false, manager.park(ford));
+        manager.park(ford);
+    }
+
+    @Test
+    public void testManagerFetchCarWhenFindCarInParkingLots() throws Exception {
+        manager.manage(parkingLots);
+        Car benz = new Car();
+        benz.park(parkingLots.get(0));
+
+        assertEquals(true, manager.fetch(benz));
+    }
+
+    @Test(expected = Exception.class)
+    public void testManagerFetchCarWhenNotFindCarInParkingLots() throws Exception {
+        manager.manage(parkingLots);
+        Car benz = new Car();
+        Car audi = new Car();
+        benz.park(parkingLots.get(0));
+
+        manager.fetch(audi);
     }
 }
