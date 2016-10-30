@@ -10,38 +10,41 @@ import static org.junit.Assert.assertEquals;
 public class CarTest {
     @Test
     public void testCar() {
-        Car car = new Car(new ParkingLot(10));
-        assertEquals(10, car.checkParkingSlot());
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car benz = new Car();
+        assertEquals(10, benz.checkParkingSlot(parkingLot));
     }
 
     @Test
     public void testCarParkWhenParkingLotAvailable() throws Exception {
-        Car car = new Car(new ParkingLot(10));
-        assertEquals(1, car.park().checkParkStatus());
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car benz = new Car();
+        assertEquals(1, benz.park(parkingLot).checkParkStatus());
     }
 
     @Test(expected = Exception.class)
     public void testCarParkWhenParkingLotFull() throws Exception {
         ParkingLot parkingLot = new ParkingLot(1);
-        Car car1 = new Car(parkingLot);
-        Car car2 = new Car(parkingLot);
-        car1.park();
-        car2.park();
+        Car benz = new Car();
+        Car audi = new Car();
+        benz.park(parkingLot);
+        audi.park(parkingLot);
     }
 
     @Test
     public void testCarLeaveWhenFindInParkingLot() throws Exception {
-        Car car = new Car(new ParkingLot(10));
-        car.park();
-        assertEquals(0, car.leave().checkParkStatus());
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car benz = new Car();
+        benz.park(parkingLot);
+        assertEquals(0, benz.leave(parkingLot).checkParkStatus());
     }
 
     @Test(expected = Exception.class)
     public void testCarLeaveWhenNotFindInParkingLot() throws Exception {
         ParkingLot parkingLot = new ParkingLot(10);
-        Car car1 = new Car(parkingLot);
-        Car car2 = new Car(parkingLot);
-        car1.park();
-        car2.leave();
+        Car benz = new Car();
+        Car audi = new Car();
+        benz.park(parkingLot);
+        audi.leave(parkingLot);
     }
 }
