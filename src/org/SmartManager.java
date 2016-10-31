@@ -7,6 +7,11 @@ import java.util.Iterator;
  * Created by jukzhang on 10/30/16.
  */
 public class SmartManager extends Manager{
+
+    public SmartManager(String name) {
+        super(name);
+    }
+
     @Override
     public boolean park(Car car) throws Exception {
         ParkingLot tmParkingLot = parkingLots.get(0);

@@ -7,13 +7,13 @@ import static org.junit.Assert.assertEquals;
 public class ParkingLotTest {
     @Test
     public void testParkingLot() {
-        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingLot parkingLot = new ParkingLot("east", 10);
         assertEquals(10, parkingLot.getSlot());
     }
 
     @Test
     public void testRegisterCarParkingLotAvailable() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot("east", 1);
         Car benz = new Car();
         parkingLot.registerCar(benz);
 
@@ -22,7 +22,7 @@ public class ParkingLotTest {
 
     @Test(expected = Exception.class)
     public void testRegisterCarParkingLotFull() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot("east", 1);
         Car benz = new Car();
         Car audi = new Car();
         parkingLot.registerCar(benz);
@@ -31,7 +31,7 @@ public class ParkingLotTest {
 
     @Test
     public void testRemoveCarInParkingLot() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot("east", 1);
         Car benz = new Car();
         parkingLot.registerCar(benz);
         parkingLot.removeCar(benz);
@@ -41,7 +41,7 @@ public class ParkingLotTest {
 
     @Test(expected = Exception.class)
     public void testRemoveCarNotInParkingLot() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot("east", 1);
         Car benz = new Car();
         Car audi = new Car();
         parkingLot.registerCar(benz);
@@ -50,7 +50,7 @@ public class ParkingLotTest {
 
     @Test
     public void testParkingLotIsAvailable() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(2);
+        ParkingLot parkingLot = new ParkingLot("east", 2);
         Car benz = new Car();
         Car audi = new Car();
         parkingLot.registerCar(benz);
@@ -61,7 +61,7 @@ public class ParkingLotTest {
 
     @Test
     public void testAvailableParkingLot() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(2);
+        ParkingLot parkingLot = new ParkingLot("east", 2);
         Car benz = new Car();
         parkingLot.registerCar(benz);
 

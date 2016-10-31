@@ -14,12 +14,12 @@ public class ManagerTest {
     public ArrayList<ParkingLot> parkingLots;
     @Before
     public void setUp() {
-        manager = new Manager();
+        manager = new Manager("Ma Huateng");
         parkingLots = new ArrayList();
-        ParkingLot eastParkingLot = new ParkingLot(1);
-        ParkingLot westParkingLot = new ParkingLot(1);
-        ParkingLot southParkingLot = new ParkingLot(1);
-        ParkingLot northParkingLot = new ParkingLot(1);
+        ParkingLot eastParkingLot = new ParkingLot("east", 1);
+        ParkingLot westParkingLot = new ParkingLot("west", 1);
+        ParkingLot southParkingLot = new ParkingLot("south", 1);
+        ParkingLot northParkingLot = new ParkingLot("north", 1);
 
         parkingLots.add(eastParkingLot);
         parkingLots.add(westParkingLot);
@@ -31,7 +31,7 @@ public class ManagerTest {
     public void testManagerParkingLotNum() {
         manager.manage(parkingLots);
 
-        assertEquals(4, manager.getLots());
+        assertEquals(4, manager.getLots().size());
     }
 
     @Test
@@ -40,13 +40,15 @@ public class ManagerTest {
         Car benz = new Car();
 
         assertEquals(true, manager.park(benz));
+        assertEquals(1, manager.getLots().get(0).checkParkStatus());
+        assertEquals(0, manager.getLots().get(1).checkParkStatus());
     }
 
     @Test(expected = Exception.class)
     public void testManagerParkCarWhenNoParkingLotsAvailable() throws Exception {
         parkingLots = new ArrayList();
-        ParkingLot eastParkingLot = new ParkingLot(1);
-        ParkingLot westParkingLot = new ParkingLot(1);
+        ParkingLot eastParkingLot = new ParkingLot("east", 1);
+        ParkingLot westParkingLot = new ParkingLot("west", 1);
         parkingLots.add(eastParkingLot);
         parkingLots.add(westParkingLot);
         Car benz = new Car();

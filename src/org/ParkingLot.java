@@ -8,8 +8,10 @@ import java.util.ArrayList;
 public class ParkingLot implements Management{
     public ArrayList<Car> cars = new ArrayList<>();
     private int slotNumber;
+    private String name;
 
-    public ParkingLot(int slot) {
+    public ParkingLot(String name, int slot) {
+        this.name = name;
         this.slotNumber = slot;
     }
 
@@ -45,5 +47,9 @@ public class ParkingLot implements Management{
 
     public int checkParkStatus() {
         return this.cars.size();
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -17,12 +17,12 @@ public class SmartManagerTest {
     public ArrayList<ParkingLot> parkingLots;
     @Before
     public void setUp() {
-        smartManager = new SmartManager();
+        smartManager = new SmartManager("Ma Yun");
         parkingLots = new ArrayList();
-        ParkingLot eastParkingLot = new ParkingLot(2);
-        ParkingLot westParkingLot = new ParkingLot(3);
-        ParkingLot southParkingLot = new ParkingLot(5);
-        ParkingLot northParkingLot = new ParkingLot(4);
+        ParkingLot eastParkingLot = new ParkingLot("east", 2);
+        ParkingLot westParkingLot = new ParkingLot("west", 3);
+        ParkingLot southParkingLot = new ParkingLot("south", 5);
+        ParkingLot northParkingLot = new ParkingLot("north", 4);
 
         parkingLots.add(eastParkingLot);
         parkingLots.add(westParkingLot);
