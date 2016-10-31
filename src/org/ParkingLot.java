@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by jukzhang on 10/20/16.
  */
-public class ParkingLot implements Management{
+public class ParkingLot implements Service {
     public ArrayList<Car> cars = new ArrayList<>();
     private int slotNumber;
     private String name;
